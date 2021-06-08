@@ -1,11 +1,13 @@
 import React from "react";
-
-function TodoItem() {
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../redux/actions";
+function TodoItem({ todo }) {
+  const dispatch = useDispatch();
   return (
     <div>
-      <h3>Text</h3>
+      <h4>{todo.text}</h4>
       <button>Edit</button>
-      <button>Delete</button>
+      <button onClick={() => dispatch(deleteTodo(todo.id))}>Delete</button>
     </div>
   );
 }
