@@ -1,28 +1,29 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO } from "./actions";
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_TODO } from "./actions";
 export default (
   state = [
     {
       id: 1,
       text: "Hello",
     },
-    {
-      id: 2,
-      text: "Hello SOurav",
-    },
   ],
   action
 ) => {
   switch (action.type) {
     case ADD_TODO:
-      break;
+      return [...state, action.payload];
+
     case DELETE_TODO:
-      let newTodos = [...state];
-      newTodos = newTodos.filter((todo) => todo.id !== action.payload);
-      return newTodos;
+      return state.filter((todo) => todo.id !== action.payload);
 
     case EDIT_TODO:
-      break;
-
+      return state.map((todo) => {
+        if (todo.id === action.payload.id) {
+          todo.text = action.payload.text;
+        }
+        return todo;
+      });
+    case CLEAR_TODO:
+      return [];
     default:
       return state;
   }
