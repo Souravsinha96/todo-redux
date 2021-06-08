@@ -1,3 +1,76 @@
 .App {
   text-align: center;
+  font-family: cursive;
+}
+.mainContainer {
+  padding: 20px;
+  width: 600px;
+  margin: 0 auto;
+}
+h1 {
+  font-family: inherit;
+  font-size: 3rem;
+  letter-spacing: 5px;
+  margin-top: 0;
+}
+h4 {
+  font-family: inherit;
+  font-size: 1.5rem;
+}
+input {
+  width: 500px;
+  height: 30px;
+  background-color: cornsilk;
+  border-radius: 5px 0 0 5px;
+  border: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-left: 5px;
+}
+input:focus {
+  outline: none;
+}
+.editInput {
+  width: 400px;
+  border-radius: 5px;
+}
+button {
+  height: 32px;
+  border: 0;
+  border-radius: 0 5px 5px 0;
+  background-color: green;
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.9ms ease-in-out;
+}
+button:disabled {
+  background-color: white;
+  color: #222;
+  cursor: not-allowed;
+  outline: none;
+  border: 0;
+}
+button:disabled:hover {
+  transform: scale(1);
+}
+button:hover {
+  transform: scale(1.03);
+}
+.listContainer {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px auto;
+  padding: 5px;
+  height: 40px;
 }

@@ -7,11 +7,16 @@ function TodoList() {
   const todos = useSelector((state) => state);
 
   return (
-    <div>
+    <div className="listContainer">
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
       <button
+        style={{
+          borderRadius: "5px",
+          backgroundColor: "red",
+          marginLeft: "5px",
+        }}
         disabled={todos.length === 0}
         onClick={() => dispatch(clearTodo())}
       >

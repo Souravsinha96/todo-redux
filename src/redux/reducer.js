@@ -1,13 +1,5 @@
 import { ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_TODO } from "./actions";
-export default (
-  state = [
-    {
-      id: 1,
-      text: "Hello",
-    },
-  ],
-  action
-) => {
+export default (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
       return [...state, action.payload];

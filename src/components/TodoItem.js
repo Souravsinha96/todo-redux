@@ -10,9 +10,10 @@ function TodoItem({ todo }) {
     if (editable !== false) inputref.current.focus();
   }, [editable]);
   return (
-    <div>
+    <div className="itemContainer">
       {editable ? (
         <input
+          className="editInput"
           ref={inputref}
           type="text"
           value={text}
@@ -21,21 +22,38 @@ function TodoItem({ todo }) {
       ) : (
         <h4>{todo.text}</h4>
       )}
-      <button
-        onClick={() => {
-          dispatch(
-            editTodo({
-              ...todo,
-              text,
-            })
-          );
+      <div>
+        <button
+          style={{
+            borderRadius: "5px",
+            backgroundColor: "blue",
+            marginLeft: "5px",
+          }}
+          disabled={text === ""}
+          onClick={() => {
+            dispatch(
+              editTodo({
+                ...todo,
+                text,
+              })
+            );
 
-          setEditable(!editable);
-        }}
-      >
-        {editable ? "Done" : "Edit"}
-      </button>
-      <button onClick={() => dispatch(deleteTodo(todo.id))}>Delete</button>
+            setEditable(!editable);
+          }}
+        >
+          {editable ? "Done" : "Edit"}
+        </button>
+        <button
+          style={{
+            borderRadius: "5px",
+            backgroundColor: "red",
+            marginLeft: "5px",
+          }}
+          onClick={() => dispatch(deleteTodo(todo.id))}
+        >
+          X
+        </button>
+      </div>
     </div>
   );
 }

@@ -9,9 +9,15 @@ function TodoInput() {
   useEffect(() => {
     inputref.current.focus();
   });
+
+  const newDate = new Date();
+
   return (
-    <div>
-      <h1>Todays Task</h1>
+    <div className="mainContainer">
+      <h1>Today's Task</h1>
+      <p style={{ textAlign: "end", color: "black" }}>
+        <em>Date: {newDate.toLocaleDateString()}</em>
+      </p>
       <input
         ref={inputref}
         type="text"
@@ -30,7 +36,7 @@ function TodoInput() {
           setText("");
         }}
       >
-        Add
+        Add Todo
       </button>
     </div>
   );
