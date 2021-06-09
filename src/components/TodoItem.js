@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo, editTodo } from "../redux/actions";
+import { deleteTodo, editTodo, completeTodo } from "../redux/actions";
 function TodoItem({ todo }) {
   const [editable, setEditable] = useState(false);
   const [text, setText] = useState(todo.text);
@@ -20,7 +20,22 @@ function TodoItem({ todo }) {
           onChange={(e) => setText(e.target.value)}
         />
       ) : (
-        <h4>{todo.text}</h4>
+        <div>
+          <input
+            className="checkbox"
+            type="checkbox"
+            onClick={() => dispatch(completeTodo(todo.id))}
+          />
+          <h4
+            style={{
+              textDecorationLine: todo.completed ? "line-through" : undefined,
+              textDecorationThickness: "5px",
+              textDecorationColor: "purple",
+            }}
+          >
+            {todo.text}
+          </h4>
+        </div>
       )}
       <div>
         <button
@@ -29,7 +44,7 @@ function TodoItem({ todo }) {
             backgroundColor: "blue",
             marginLeft: "5px",
           }}
-          disabled={text === ""}
+          disabled={text === "" || todo.completed === true}
           onClick={() => {
             dispatch(
               editTodo({

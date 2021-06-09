@@ -5,6 +5,7 @@ import { clearTodo } from "../redux/actions";
 function TodoList() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state);
+  console.log(todos);
 
   return (
     <div className="listContainer">

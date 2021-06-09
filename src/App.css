@@ -16,6 +16,8 @@ h1 {
 h4 {
   font-family: inherit;
   font-size: 1.5rem;
+  cursor: pointer;
+  display: inline-block;
 }
 input {
   width: 500px;
@@ -73,4 +75,10 @@ button:hover {
   margin: 5px auto;
   padding: 5px;
   height: 40px;
+}
+
+.checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 14px;
 }

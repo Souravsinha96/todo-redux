@@ -1,4 +1,10 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, CLEAR_TODO } from "./actions";
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  EDIT_TODO,
+  CLEAR_TODO,
+  COMPLETE_TODO,
+} from "./actions";
 export default (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
@@ -16,6 +22,13 @@ export default (state = [], action) => {
       });
     case CLEAR_TODO:
       return [];
+    case COMPLETE_TODO:
+      return state.map((todo) => {
+        if (todo.id === action.payload) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      });
     default:
       return state;
   }

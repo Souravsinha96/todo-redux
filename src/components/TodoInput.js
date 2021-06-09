@@ -31,6 +31,7 @@ function TodoInput() {
             addTodo({
               id: uuid(),
               text,
+              completed: false,
             })
           );
           setText("");
