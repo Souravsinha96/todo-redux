@@ -51,8 +51,8 @@ function TodoList() {
         onChange={(e) => setstatus(e.target.value)}
       >
         <option value="All">All</option>
-        <option value="Completed">completed</option>
-        <option value="Notcompleted">Notcompleted</option>
+        <option value="Completed">Completed ✅</option>
+        <option value="Notcompleted">Not-completed❗</option>
       </select>
     </div>
   );

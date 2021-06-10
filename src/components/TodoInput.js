@@ -9,13 +9,28 @@ function TodoInput() {
   useEffect(() => {
     inputref.current.focus();
   });
-
   const newDate = new Date();
 
+  const handleSubmit = () => {
+    dispatch(
+      addTodo({
+        id: uuid(),
+        text,
+        completed: false,
+      })
+    );
+    setText("");
+  };
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
+  };
   return (
     <div className="mainContainer">
-      <h1>ToDo List</h1>
-      <p style={{ textAlign: "end", color: "black" }}>
+      <h1>..ToDo List..</h1>
+      <p style={{ textAlign: "end", marginTop: "30px", fontWeight: "700" }}>
         Date: {newDate.toLocaleDateString()}
       </p>
       <input
@@ -24,21 +39,10 @@ function TodoInput() {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Add a todo"
+        onKeyDown={handleKeypress}
       />
-      <button
-        disabled={text === ""}
-        onClick={() => {
-          dispatch(
-            addTodo({
-              id: uuid(),
-              text,
-              completed: false,
-            })
-          );
-          setText("");
-        }}
-      >
-        Add Todo
+      <button disabled={text === ""} onClick={handleSubmit}>
+        ADD
       </button>
     </div>
   );

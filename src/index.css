@@ -5,10 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #cee5d0;
+
+  background-image: linear-gradient(90deg, #d9afd9 0%, #97d9e1 100%);
+  -webkit-tap-highlight-color: transparent;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+@media screen and (max-width: 991px) {
+  body {
+    background-color: #e1e5ea;
+    background-image: none;
+  }
 }

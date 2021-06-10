@@ -9,59 +9,59 @@ function TodoItem({ todo }) {
   useEffect(() => {
     if (editable !== false) inputref.current.focus();
   }, [editable]);
+
+  const handleSubmit = () => {
+    dispatch(
+      editTodo({
+        ...todo,
+        text,
+      })
+    );
+
+    setEditable(!editable);
+  };
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
+  };
   return (
     <div className="itemContainer">
       {editable ? (
         <input
+          placeholder="Edit a Todo"
           className="editInput"
           ref={inputref}
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeypress}
         />
       ) : (
         <div>
-          <h4
+          <li
+            className="heading"
             onClick={() => dispatch(completeTodo(todo.id))}
             style={{
               textDecorationLine: todo.completed ? "line-through" : undefined,
-              textDecorationThickness: "5px",
-              textDecorationColor: "purple",
               opacity: todo.completed ? 0.5 : 1,
-              transition: "opacity 0.5s ease-in",
             }}
           >
             {todo.text}
-          </h4>
+          </li>
         </div>
       )}
       <div>
         <button
-          style={{
-            borderRadius: "5px",
-            backgroundColor: "#39a9cb",
-            marginLeft: "5px",
-          }}
+          className="update"
           disabled={text === "" || todo.completed === true}
-          onClick={() => {
-            dispatch(
-              editTodo({
-                ...todo,
-                text,
-              })
-            );
-
-            setEditable(!editable);
-          }}
+          onClick={handleSubmit}
         >
-          {editable ? "Done" : "Edit"}
+          {editable ? "DONE" : "EDIT"}
         </button>
         <button
-          style={{
-            borderRadius: "5px",
-            backgroundColor: "red",
-            marginLeft: "10px",
-          }}
+          className="delete"
           onClick={() => dispatch(deleteTodo(todo.id))}
         >
           X

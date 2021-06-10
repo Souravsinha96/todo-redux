@@ -7,6 +7,10 @@ function App() {
     <div className="App">
       <TodoInput />
       <TodoList />
+      <footer className="footer">
+        Made with <span style={{ color: "red" }}>❤ </span>by{" "}
+        <strong>Sourav</strong>
+      </footer>
     </div>
   );
 }
