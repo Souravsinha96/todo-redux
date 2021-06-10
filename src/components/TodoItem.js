@@ -25,12 +25,14 @@ function TodoItem({ todo }) {
             className="checkbox"
             type="checkbox"
             onClick={() => dispatch(completeTodo(todo.id))}
+            value={todo.completed}
           />
           <h4
             style={{
               textDecorationLine: todo.completed ? "line-through" : undefined,
               textDecorationThickness: "5px",
               textDecorationColor: "purple",
+              opacity: todo.completed ? 0.5 : 1,
             }}
           >
             {todo.text}
@@ -41,7 +43,7 @@ function TodoItem({ todo }) {
         <button
           style={{
             borderRadius: "5px",
-            backgroundColor: "blue",
+            backgroundColor: "#39a9cb",
             marginLeft: "5px",
           }}
           disabled={text === "" || todo.completed === true}
@@ -62,7 +64,7 @@ function TodoItem({ todo }) {
           style={{
             borderRadius: "5px",
             backgroundColor: "red",
-            marginLeft: "5px",
+            marginLeft: "10px",
           }}
           onClick={() => dispatch(deleteTodo(todo.id))}
         >

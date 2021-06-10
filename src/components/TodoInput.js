@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/actions";
 import { v1 as uuid } from "uuid";
 function TodoInput() {
-  const [text, setText] = useState("");
   const dispatch = useDispatch();
+  const [text, setText] = useState("");
   const inputref = useRef();
   useEffect(() => {
     inputref.current.focus();

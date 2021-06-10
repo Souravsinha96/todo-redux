@@ -4,7 +4,9 @@ import {
   EDIT_TODO,
   CLEAR_TODO,
   COMPLETE_TODO,
+  
 } from "./actions";
+
 export default (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
@@ -29,6 +31,7 @@ export default (state = [], action) => {
         }
         return todo;
       });
+   
     default:
       return state;
   }
