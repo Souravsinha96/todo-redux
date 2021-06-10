@@ -21,18 +21,14 @@ function TodoItem({ todo }) {
         />
       ) : (
         <div>
-          <input
-            className="checkbox"
-            type="checkbox"
-            onClick={() => dispatch(completeTodo(todo.id))}
-            value={todo.completed}
-          />
           <h4
+            onClick={() => dispatch(completeTodo(todo.id))}
             style={{
               textDecorationLine: todo.completed ? "line-through" : undefined,
               textDecorationThickness: "5px",
               textDecorationColor: "purple",
               opacity: todo.completed ? 0.5 : 1,
+              transition: "opacity 0.5s ease-in",
             }}
           >
             {todo.text}

@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   font-family: cursive;
-  text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.6);
 }
 .mainContainer {
   padding: 20px;
@@ -20,6 +19,10 @@ h4 {
   font-size: 1.5rem;
   cursor: pointer;
   display: inline-block;
+  text-decoration-thickness: 5px;
+  text-decoration-color: purple;
+
+  transition: opacity 0.5s ease-in;
 }
 input {
   width: 500px;
@@ -82,15 +85,9 @@ button:hover {
   height: 40px;
 }
 
-.checkbox {
-  display: inline-block;
-  width: 20px;
-  height: 14px;
-  box-shadow: none;
-}
 .dropdown {
   margin-left: 20px;
-  height: 30px;
+  height: 35px;
   background-color: cornsilk;
   border-radius: 5px;
   border: 0;

@@ -37,6 +37,7 @@ function TodoList() {
           borderRadius: "5px",
           backgroundColor: "#f54748",
           marginLeft: "5px",
+          marginTop: "20px",
         }}
         disabled={todos.length === 0}
         onClick={() => dispatch(clearTodo())}
