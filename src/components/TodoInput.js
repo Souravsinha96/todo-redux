@@ -31,7 +31,7 @@ function TodoInput() {
     <div className="mainContainer">
       <h1>..ToDo List..</h1>
       <p style={{ textAlign: "end", marginTop: "30px", fontWeight: "700" }}>
-        Date: {newDate.toLocaleDateString()}
+        Date:- {newDate.toLocaleDateString()}
       </p>
       <input
         ref={inputref}
