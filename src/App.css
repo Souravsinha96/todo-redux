@@ -42,6 +42,7 @@ input {
   background-color: cornsilk;
   border-radius: 5px 0 0 5px;
   border: 0;
+
   font-family: inherit;
   font-size: 1rem;
   font-weight: bold;
@@ -52,7 +53,10 @@ input:focus {
 }
 .editInput {
   width: 400px;
-  border-radius: 5px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0px;
+  border-bottom: 2px dashed cornsilk;
   padding-left: 15px;
 }
 button {
@@ -142,6 +146,7 @@ button:disabled {
   }
   .editInput {
     width: 200px;
+    height: 30px;
   }
   button {
     height: 42px;
@@ -153,7 +158,7 @@ button:disabled {
     font-size: 1rem;
   }
   .heading::before {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
 
