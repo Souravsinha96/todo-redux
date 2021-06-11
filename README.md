@@ -1,3 +1,14 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ca196731-aeb8-4c70-bb81-6572c3147ed6/deploy-status)](https://app.netlify.com/sites/sharp-visvesvaraya-98a24b/deploys)
+
+# ToDo List App
+### Functionalties: Add, delete, edit, filtering based on completed, not completed etc.
+### Topics: React, Redux, localstorage, hooks
+
+## URL:https://sharp-visvesvaraya-98a24b.netlify.app/
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
