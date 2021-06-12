@@ -4,7 +4,7 @@ import {
   EDIT_TODO,
   CLEAR_TODO,
   COMPLETE_TODO,
-  
+  DELETEALL_TODO,
 } from "./actions";
 
 export default (state = [], action) => {
@@ -23,7 +23,10 @@ export default (state = [], action) => {
         return todo;
       });
     case CLEAR_TODO:
+      return state.filter((todo) => todo.date !== action.payload);
+    case DELETEALL_TODO:
       return [];
+
     case COMPLETE_TODO:
       return state.map((todo) => {
         if (todo.id === action.payload) {
@@ -31,7 +34,7 @@ export default (state = [], action) => {
         }
         return todo;
       });
-   
+
     default:
       return state;
   }

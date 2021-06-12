@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../redux/actions";
+import { addTodo, deleteAllTodo } from "../redux/actions";
 import { v1 as uuid } from "uuid";
+import date from "date-and-time";
 function TodoInput() {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const inputref = useRef();
+  const pattern = date.compile("YYYY-MM-DD");
+
   useEffect(() => {
     inputref.current.focus();
   });
-  const newDate = new Date();
 
   const handleSubmit = () => {
     dispatch(
@@ -17,6 +19,7 @@ function TodoInput() {
         id: uuid(),
         text,
         completed: false,
+        date: date.format(new Date(), pattern),
       })
     );
     setText("");
@@ -30,9 +33,10 @@ function TodoInput() {
   return (
     <div className="mainContainer">
       <h1>..ToDo List..</h1>
-      <p style={{ textAlign: "end", marginTop: "30px", fontWeight: "700" }}>
-        Date:- {newDate.toLocaleDateString()}
-      </p>
+
+      <button className="deleteTodo" onClick={() => dispatch(deleteAllTodo())}>
+        Clear Data
+      </button>
       <input
         ref={inputref}
         type="text"

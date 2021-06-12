@@ -1,31 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import date from "date-and-time";
 import TodoItem from "./TodoItem";
 import { clearTodo } from "../redux/actions";
 function TodoList() {
   const dispatch = useDispatch();
+  const pattern = date.compile("YYYY-MM-DD");
   const todos = useSelector((state) => state);
   const [status, setstatus] = useState("All");
   const [filtered, setfiltered] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(
+    date.format(new Date(), pattern)
+  );
 
   useEffect(() => {
     const filterHandler = () => {
       switch (status) {
         case "Completed":
-          setfiltered(todos.filter((todo) => todo.completed));
+          setfiltered(
+            todos.filter((todo) => todo.completed && todo.date === selectedDate)
+          );
 
           break;
         case "Notcompleted":
-          setfiltered(todos.filter((todo) => todo.completed === false));
+          setfiltered(
+            todos.filter(
+              (todo) => todo.completed === false && todo.date === selectedDate
+            )
+          );
           break;
 
         default:
-          setfiltered(todos);
+          setfiltered(todos.filter((todo) => todo.date === selectedDate));
           break;
       }
     };
     filterHandler();
-  }, [status, todos]);
+  }, [status, todos, selectedDate]);
+
+  const dateHandler = (e) => {
+    setSelectedDate(e.target.value);
+  };
 
   return (
     <div className="listContainer">
@@ -40,9 +55,13 @@ function TodoList() {
           marginTop: "20px",
         }}
         disabled={todos.length === 0}
-        onClick={() => dispatch(clearTodo())}
+        onClick={() => {
+          dispatch(clearTodo(selectedDate));
+          setstatus("All");
+          setSelectedDate(date.format(new Date(), pattern));
+        }}
       >
-        Clear All
+        Clear Todo
       </button>
 
       <select
@@ -54,6 +73,14 @@ function TodoList() {
         <option value="Completed">Completed ✅</option>
         <option value="Notcompleted">Not-completed❗</option>
       </select>
+      <input
+        className="date"
+        type="date"
+        value={selectedDate}
+        onChange={(e) => {
+          dateHandler(e);
+        }}
+      />
     </div>
   );
 }

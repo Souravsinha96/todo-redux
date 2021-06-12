@@ -16,6 +16,7 @@ function App() {
           }}
           href="https://github.com/Souravsinha96/todo-redux"
           target="_blank"
+          rel="noreferrer"
         >
           <strong>Sourav</strong>
         </a>

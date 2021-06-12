@@ -3,7 +3,7 @@ export const DELETE_TODO = "DELETE_TODO";
 export const EDIT_TODO = "EDIT_TODO";
 export const CLEAR_TODO = "CLEAR_TODO";
 export const COMPLETE_TODO = "COMPLETE_TODO";
-
+export const DELETEALL_TODO = "DELETEALL_TODO";
 
 export function addTodo(todo) {
   return {
@@ -23,9 +23,15 @@ export function editTodo(todo) {
     payload: todo,
   };
 }
-export function clearTodo() {
+export function clearTodo(todoDate) {
   return {
     type: CLEAR_TODO,
+    payload: todoDate,
+  };
+}
+export function deleteAllTodo() {
+  return {
+    type: DELETEALL_TODO,
   };
 }
 export function completeTodo(todoId) {
@@ -34,4 +40,3 @@ export function completeTodo(todoId) {
     payload: todoId,
   };
 }
-
