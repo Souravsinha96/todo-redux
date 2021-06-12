@@ -12,7 +12,7 @@ function TodoList() {
   const [selectedDate, setSelectedDate] = useState(
     date.format(new Date(), pattern)
   );
-
+  console.log(todos);
   useEffect(() => {
     const filterHandler = () => {
       switch (status) {
@@ -31,7 +31,8 @@ function TodoList() {
           break;
 
         default:
-          setfiltered(todos.filter((todo) => todo.date === selectedDate));
+          const newdata = todos.filter((todo) => todo.date === selectedDate);
+          newdata.length === 0 ? setfiltered([]) : setfiltered(newdata);
           break;
       }
     };
@@ -44,9 +45,25 @@ function TodoList() {
 
   return (
     <div className="listContainer">
+      <p
+        style={{
+          fontWeight: "700",
+          color: "#fff",
+          display: " block",
+          padding: "5px",
+          margin: "10px auto",
+          width: "160px",
+          borderRadius: "50px",
+          backgroundColor: "#125d98",
+          textAlign: " center",
+        }}
+      >
+        📅 {selectedDate.split("-").reverse().join("-")}
+      </p>
       {filtered.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
+
       <button
         style={{
           borderRadius: "5px",

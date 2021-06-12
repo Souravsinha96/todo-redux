@@ -6,6 +6,7 @@ import date from "date-and-time";
 function TodoInput() {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
+
   const inputref = useRef();
   const pattern = date.compile("YYYY-MM-DD");
 

@@ -58,13 +58,13 @@ function TodoItem({ todo }) {
           disabled={text === "" || todo.completed === true}
           onClick={handleSubmit}
         >
-          {editable ? "DONE" : "EDIT"}
+          {editable ? "✔" : "📝"}
         </button>
         <button
           className="delete"
           onClick={() => dispatch(deleteTodo(todo.id))}
         >
-          X
+          ❌
         </button>
       </div>
     </div>
